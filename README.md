@@ -1,15 +1,52 @@
 # retraction-seeker
 
-This project is WIP attempt at gcode generator that produces array of towers with various retraction settings between them.
+Basado completamente en https://github.com/volca02/retraction-seeker
 
-* X axis changes retraction distance (by default 1.0 - 5.5 mm in 0.25 mm steps)
-* Y axis changes retraction speed (by default 10.0 - 55.0 mm/s in 2.5 mm/s steps)
-* Z axis changes temperature (by default 210 to 190 in 5C steps, 5mm each step)
+La idea de este test es para agilizar encontrar las retracciones adecuadas de forma rapida, generando un test masivo con las combinaciones de interes a revisar.
 
-The generated values for each of the axis are listed in the g-code and should be used as a key when observing the platter (ret_d_steps, ret_spd_steps, temp_steps).
+### Para Ender 3
 
-All parameters of the generated g-code can be influenced by editing a settings.json file placed next to the script (see settings.json.example as an example).
+A falta de encontrar valores que puedan resultar mas adecuados, lo unico basico que es necesario ajustar para cada test debido a las personalizaciones individuales de cada uno, partiendo del ejemplo *config_sample/settings-ender3.json* es lo siguiente:
 
-Default parameters are set to similar values that prusa i3 mk3 would expect.
+Distancia de retraccion:
+- **steps_x**: 7
+- **ret_d_start**: 4.0
+- **ret_d_step**: 0.5
 
-NOTE: Currently, the generated E axis movement is 7% more than expected (when compared to Slic3r generated g-code). Since this is a crucial part of the generation, more effort will be put to get the extrusion factor lined up correctly.
+Generara **steps_x** columnas en X, en las que partiendo de **ret_d_start**, en cada cambio incrementara las retracciones en **ret_d_step**. 
+
+```
+[ 1] .. 4.0 .. [ 2] .. 4.5 .. [ 3] .. 5.0 .. [ 4] .. 5.5 .. [ 5] .. 6.0 .. [ 6] .. 6.5 .. [ 7]
+```
+
+Velocidad de retraccion:
+- **steps_y**: 5,
+- **ret_spd_start**: 20,
+- **ret_spd_step**: 10,
+
+```
+[ 5] 60mm/s
+[ 4] 50mm/s
+[ 3] 40mm/s
+[ 2] 30mm/s
+[ 1] 20mm/s
+```
+
+Generara **steps_y** columnas en Y, en las que hara las siguientes pruebas
+
+Temperatura del nozzle:
+- **steps_z**: 1,
+- **ret_temp_start**: 190,
+- **ret_temp_step**: -5,
+
+Generara **steps_z** pruebas cada 5mm de altura, partiendo de **ret_temp_start** y cambiando la temperatura en **ret_temp_step** grados.   
+
+En total genera **steps_x** x **steps_y** x **steps_z** en 1 impresion.
+
+```
+[ 5] 60.00 mm/s :  [ 1] .. 4.0 mm .. [ 2] .. 4.5 mm .. [ 3] .. 5.0 mm .. [ 4] .. 5.5 mm .. [ 5] .. 6.0 mm .. [ 6] .. 6.5 mm .. [ 7]
+[ 4] 50.00 mm/s :  [ 1] .. 4.0 mm .. [ 2] .. 4.5 mm .. [ 3] .. 5.0 mm .. [ 4] .. 5.5 mm .. [ 5] .. 6.0 mm .. [ 6] .. 6.5 mm .. [ 7]
+[ 3] 40.00 mm/s :  [ 1] .. 4.0 mm .. [ 2] .. 4.5 mm .. [ 3] .. 5.0 mm .. [ 4] .. 5.5 mm .. [ 5] .. 6.0 mm .. [ 6] .. 6.5 mm .. [ 7]
+[ 2] 30.00 mm/s :  [ 1] .. 4.0 mm .. [ 2] .. 4.5 mm .. [ 3] .. 5.0 mm .. [ 4] .. 5.5 mm .. [ 5] .. 6.0 mm .. [ 6] .. 6.5 mm .. [ 7]
+[ 1] 20.00 mm/s :  [ 1] .. 4.0 mm .. [ 2] .. 4.5 mm .. [ 3] .. 5.0 mm .. [ 4] .. 5.5 mm .. [ 5] .. 6.0 mm .. [ 6] .. 6.5 mm .. [ 7]
+```
