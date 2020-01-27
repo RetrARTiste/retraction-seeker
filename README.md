@@ -99,14 +99,18 @@ En total genera **steps_x** x **steps_y** x **steps_z** en 1 impresion. Y a mas 
   - Para los menos experimentados, descomprimirlo directamente en C:, la explicacion se asumira como hecha seguida asi.
   - Escoger de **C:\retraction-seeker-master\config_sample** el archivo json mas adecuado, y copiarlo en **C:\retraction-seeker-master\settings.json**
     - Importante respetar el nombre del archivo, ya que ya se incluye uno de ejemplo con dicho nombre y hay que reemplazarlo.
-- Abrir un terminal (Powershell en Windows 10, por ejemplo) y ejecutar:
-  - cd C:\retraction-seeker-master
-  - py.exe -u retraction-seeker.py > test_retracciones.gcode
-    - Si genera un archivo vacio (0 bytes), algo se ha hecho mal en los pasos anteriores. Releer con atencion los puntos anteriores. 
+  - Ejecutar **generate-win.bat**
+  o
+  - Abrir un terminal (Powershell en Windows 10, por ejemplo) y ejecutar:
+    - cd C:\retraction-seeker-master
+    - py.exe -u retraction-seeker.py > test_retracciones.gcode
+      - Si genera un archivo vacio (0 bytes), algo se ha hecho mal en los pasos anteriores. Releer con atencion los puntos anteriores. 
 - Copiar a la SD el archivo generado test_retracciones.gcode
 - Imprimir test_retracciones.gcode
 - Abrir el test_retracciones.gcode con un editor de texto tipo Bloc de Notas de Windows y buscar la tabla para asegurar los valores de los datos que buscamos.
 
 ## Requisitos para Linux
 - Instalar Python3
+- Ejecutar **generate-linux.sh**
+o 
 - ./retraction-seeker.py > test_retracciones.gcode
