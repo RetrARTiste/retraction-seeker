@@ -92,6 +92,10 @@ Es posible hacer varias alturas? Si, pero una pila muy alta y estrecha, puede ac
 
 En total genera **steps_x** x **steps_y** x **steps_z** en 1 impresion. Y a mas pruebas, obviamente, mas tardara. Pero si todo sale bien, sera tiempo bien invertido ;)
 
+#### GCodes preparados
+
+No quieres complicaciones? Se incluye 1 GCode de ejemplo para una Ender3/Pro stock y otra con extrusion directa, tal y como se ve en las fotos de la carpeta screenshots.
+Puedes usar directamente el que mejor se ajuste tipo de extrusion, aunque lo ideal es aprovechar y hacer la prueba lo mas concreta posible.
 
 ## Requisitos para Windows
 - Instalar la ultima version 3.X de https://www.python.org/downloads/
