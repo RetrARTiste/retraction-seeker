@@ -17,7 +17,7 @@ A falta de encontrar valores que puedan resultar mas adecuados, lo unico que es 
 
 **A tener en cuenta:** unas retracciones demasiado altas, pueden terminar causando un atasco, asi que si tienes dudas de que valores son mas adecuados, inicialmente no los toques y ya tienes un punto del que partir.
 
-##Que va a generar este codigo?
+## Que va a generar este codigo?
 
 Una impresion de torres de este estilo:
 
@@ -35,7 +35,7 @@ Donde lo que interesa modificar a la mayoria es las velocidades de retraccion y 
 
 Estos datos de ejemplo utilizados antes, se generan al inicio del gcode resultante, asi que con abrir el archivo generado con un editor de texto como puede ser NotePad++, podemos verlo sin necesidad de entender que ni como se ha generado la prueba.  
 
-###Distancia de retraccion:
+### Distancia de retraccion:
 - **steps_x**: 7
 - **ret_d_start**: 4.0
 - **ret_d_step**: 0.5
@@ -57,7 +57,7 @@ Si por ejemplo tenemos unas retracciones mas bajas, bastaria con hacer un cambio
 - **ret_d_step**: 0.1
 Y ya estariamos generando 10 pruebas entre 0.6 y 1.6
 
-###Velocidad de retraccion:
+### Velocidad de retraccion:
 - **steps_y**: 5,
 - **ret_spd_start**: 20,
 - **ret_spd_step**: 10,
@@ -77,7 +77,7 @@ Lo mismo en palabras: Generara **5** columnas en Y, en las que hara las siguient
 Por tanto, ya tenemos una rejilla/matriz, en la que cada fila, contiene las pruebas de retracciones para una velocidad de retraccion concreta.
 
 
-###Temperatura del nozzle:
+### Temperatura del nozzle:
 - **steps_z**: 1,
 - **ret_temp_start**: 190,
 - **ret_temp_step**: -5,
