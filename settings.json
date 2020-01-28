@@ -51,5 +51,5 @@
   "tile_x_step": 12,
   "tile_y_start": 50,
   "tile_y_step": 12,
-  "width_multiplier": 1.2
+  "width_multiplier": 1.0
 }

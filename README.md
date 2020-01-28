@@ -60,6 +60,7 @@ Si por ejemplo tenemos unas retracciones mas bajas, bastaria con hacer un cambio
 - **steps_x**: 10
 - **ret_d_start**: 0.6
 - **ret_d_step**: 0.1
+
 Y ya estariamos generando 10 pruebas entre 0.6 y 1.6
 
 ### Velocidad de retraccion:
@@ -115,3 +116,65 @@ En total genera **steps_x** x **steps_y** x **steps_z** en 1 impresion. Y a mas 
 - Ejecutar **generate-linux.sh**
 o 
 - ./retraction-seeker.py > test_retracciones.gcode
+
+### Que es cada parametro
+
+
+
+```
+{
+  "accel_e": 5000,                      # aceleracion maxima (mm/s^2)
+  "accel_x": 500,                       # aceleracion maxima (mm/s^2)
+  "accel_y": 500,                       # aceleracion maxima (mm/s^2)
+  "accel_z": 100,                       # aceleracion maxima (mm/s^2)
+  "bed_size_x": 235,                    # ancho de la cama (mm)
+  "bed_size_y": 235,                    # largo de la cama (mm)
+  "brim_width": 1,                      # ancho extra del ala
+  "coord_z_hop": 0.24,                  # Se calcula al vuelo: layer_height + ret_z_hop
+  "e_per_mm": 0.018671297535706604,     # Se calcula al vuelo: mm3_per_mm / filament_area
+  "fan_spd_initial": 0,                 # velocidad del ventilador en la primera capa
+  "fan_spd_other": 169,                 # velocidad del ventilador para otras capas [0-255]
+  "feed_e": 25,                         # avance máximo para la extrusora (mm/s)
+  "feed_print": 3000,                   # avance al imprimir (mm/min)
+  "feed_print_first": 1200,             # avance al imprimir la primera capa (mm/min)
+  "feed_print_outer": 3000,             # avance al imprimir la pared exterior (mm/min)
+  "feed_travel": 9000,                  # avance cuando desplaza (mm/min) = 15cm*10*60 min
+  "feed_x": 500,                        # (mm/s)
+  "feed_y": 500,                        # (mm/s)
+  "feed_z": 5,                          # (mm/s)
+  "feed_z_m": 300,                      # avance para z en (mm/m)
+  "feed_z_ret": 300,                    # avance para z en retraccion (mm/m)
+  "filament_diam": 1.75,                # (mm)
+  "gcode_intro_abl": "",                #
+  "gcode_intro_prime": "\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X10.1 Y20 Z0.28 F5000.0 ; Move to start position\nG1 X10.1 Y200.0 Z0.28 F1500.0 E15 ; Draw the first line\nG1 X10.4 Y200.0 Z0.28 F5000.0 ; Move to side a little\nG1 X10.4 Y20 Z0.28 F1500.0 E30 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\n",
+  "last_ret_d": 0,                      #
+  "layer_height": 0.12,                 # (mm)
+  "line_width": 0.4,                    # Se calcula al vuelo: nozzle_diam * width_multiplier
+  "margin_x": 20,                       # (mm)
+  "margin_y": 50,                       # (mm)
+  "max_tile_span": 12,                  # limita la extensión de mosaico para pasos x/y para recuentos bajos de steps_x/steps_y (mm)
+  "mm3_per_mm": 0.044909733552923256,   # Se calcula al vuelo: layer_height * (width - layer_height * (1. - 0.25 * pi))
+  "nozzle_area": 0.12566370614359174,   # Se calcula al vuelo: pi * (nozzle_diam / 2)^2)
+  "nozzle_diam": 0.4,                   # (mm)
+  "ret_d": 4.0,                         # Se calcula al vuelo: ret_d_start + ret_d_step
+  "ret_d_start": 4.0,                   # (mm)
+  "ret_d_step": 0.5,                    # (mm)
+  "ret_spd_start": 20,                  # (mm/s)
+  "ret_spd_step": 10,                   # (mm/s)
+  "ret_temp_start": 190,                # temperatura de impresion (Celsius)
+  "ret_temp_step": -5,                  # cada incremento de z, agregamos esto a la temperatura
+  "ret_temp_step_h": 41,                # No. de capas por cambio de temperatura: aproximadamente 5 mm aquí (5/layer_height)
+  "ret_z_hop": 0.12,                    # combinar con la configuración de feed_z_ret (mm)
+  "square_size": 3,                     # tamaño del lado del pilar cuadrado impreso (mm)
+  "steps_x": 7,                         # X == dist, max = start + steps*step (ejemplo 10 pasos para distancia por defecto: 1.0 + 10*0.25 = 3.5)
+  "steps_y": 5,                         # Y == spd
+  "steps_z": 1,                         # en este caso es 190 C, si fuera 3, seria 190, 185, 180
+  "temp_bed": 50,                       # temperatura de la capa
+  "temp_nozzle": 190,                   # temperatura inicial del nozzle, se reasignara a cada capa en Z, debe ser la misma que ret_temp_start
+  "tile_x_start": 60,                   # Se calcula al vuelo: margin_x
+  "tile_x_step": 12,                    # Se calcula al vuelo: (bed_size_x - 2 * margin_x) / steps_x
+  "tile_y_start": 50,                   # Se calcula al vuelo: margin_y
+  "tile_y_step": 12,                    # Se calcula al vuelo: (bed_size_y - 2 * margin_y) / steps_y
+  "width_multiplier": 1.0               # line_width = nozzle_diam * extrusion_multiplier
+}
+```
