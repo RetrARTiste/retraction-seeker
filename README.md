@@ -17,6 +17,11 @@ A falta de encontrar valores que puedan resultar mas adecuados, lo unico que es 
 
 **A tener en cuenta:** unas retracciones demasiado altas, pueden terminar causando un atasco, asi que si tienes dudas de que valores son mas adecuados, inicialmente no los toques y ya tienes un punto del que partir.
 
+## GCodes preparados
+
+No quieres complicaciones? Se incluye 1 GCode de ejemplo para una Ender3/Pro stock y otra con extrusion directa, tal y como se ve en las fotos de la carpeta screenshots.
+Puedes usar directamente el que mejor se ajuste a tipo de extrusion para tener un punto de partida, y una vez visto en que rangos da mejores resultados, aprovechar y hacer la prueba lo mas concreta posible, haciendo unas pruebas nuevas con un incremento menor de velocidad y de distancia asi como partir de de unos valores iniciales mas altos.   
+
 ## Que va a generar este codigo?
 
 Una impresion de torres de este estilo:
@@ -92,26 +97,18 @@ Es posible hacer varias alturas? Si, pero una pila muy alta y estrecha, puede ac
 
 En total genera **steps_x** x **steps_y** x **steps_z** en 1 impresion. Y a mas pruebas, obviamente, mas tardara. Pero si todo sale bien, sera tiempo bien invertido ;)
 
-#### GCodes preparados
-
-No quieres complicaciones? Se incluye 1 GCode de ejemplo para una Ender3/Pro stock y otra con extrusion directa, tal y como se ve en las fotos de la carpeta screenshots.
-Puedes usar directamente el que mejor se ajuste tipo de extrusion, aunque lo ideal es aprovechar y hacer la prueba lo mas concreta posible.
-
 ## Requisitos para Windows
 - Instalar la ultima version 3.X de https://www.python.org/downloads/
+  - Activar *Add Python 3.X to PATH* e instalar con normalidad
+- Instalar la ultima version de Notepad++ de https://notepad-plus-plus.org/downloads/
 - Descargar este codigo https://github.com/shawe/retraction-seeker/archive/master.zip
-  - Para los menos experimentados, descomprimirlo directamente en C:, la explicacion se asumira como hecha seguida asi.
-  - Escoger de **C:\retraction-seeker-master\config_sample** el archivo json mas adecuado, y copiarlo en **C:\retraction-seeker-master\settings.json**
+- Descomprimir el archivo
+  - Escoger de la carpeta **retraction-seeker-master\config_sample** el archivo json mas adecuado, y copiarlo en **retraction-seeker-master\settings.json**
     - Importante respetar el nombre del archivo, ya que ya se incluye uno de ejemplo con dicho nombre y hay que reemplazarlo.
-  - Ejecutar **generate-win.bat**
-  o
-  - Abrir un terminal (Powershell en Windows 10, por ejemplo) y ejecutar:
-    - cd C:\retraction-seeker-master
-    - py.exe -u retraction-seeker.py > test_retracciones.gcode
-      - Si genera un archivo vacio (0 bytes), algo se ha hecho mal en los pasos anteriores. Releer con atencion los puntos anteriores. 
+  - Ejecutar **generate-win.cmd**
 - Copiar a la SD el archivo generado test_retracciones.gcode
 - Imprimir test_retracciones.gcode
-- Abrir el test_retracciones.gcode con un editor de texto tipo Bloc de Notas de Windows y buscar la tabla para asegurar los valores de los datos que buscamos.
+- Abrir el test_retracciones.gcode con Notepad++ y buscar en la tabla para asegurar los valores de los datos que buscamos.
 
 ## Requisitos para Linux
 - Instalar Python3
