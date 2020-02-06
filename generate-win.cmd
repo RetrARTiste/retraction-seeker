@@ -1,5 +1,5 @@
 @echo off
 echo Generating GCode...
-py.exe -u retraction-seeker.py > test_retracciones.gcode
+py.exe -u retraction-seeker.py > retraction_test.gcode
 echo GCode generated...
 pause
