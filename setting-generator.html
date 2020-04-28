@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Retraction Seeker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+</head>
+<body>
+<header></header>
+
+<main role="main">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1>Retraction Seeker</h1>
+            <p class="lead text-muted">Generador de configuración</p>
+        </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <form id="values">
+                <div class="form-group row">
+                    <label for="accel_e" class="col-xs-12 col-sm-9 col-form-label">Aceleración máxima E (mm/s²)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="accel_e" value="5000" data-default="5000">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="accel_x" class="col-xs-12 col-sm-9 col-form-label">Aceleración máxima X (mm/s²)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="accel_x" value="500" data-default="500">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="accel_y" class="col-xs-12 col-sm-9 col-form-label">Aceleración máxima Y (mm/s²)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="accel_y" value="500" data-default="500">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="accel_z" class="col-xs-12 col-sm-9 col-form-label">Aceleración máxima Z (mm/s²)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="accel_z" value="100" data-default="100">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="bed_size_x" class="col-xs-12 col-sm-9 col-form-label">Ancho de la cama X (mm)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="bed_size_x" value="235" data-default="235">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="bed_size_y" class="col-xs-12 col-sm-9 col-form-label">Largo de la cama Y (mm)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="bed_size_y" value="235" data-default="235">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="brim_width" class="col-xs-12 col-sm-9 col-form-label">Ancho extra del borde</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="brim_width" value="1" data-default="1">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="fan_spd_initial" class="col-xs-12 col-sm-9 col-form-label">Velocidad del ventilador en la primera capa [0-255]</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="fan_spd_initial" min="0" max="255" value="0"  data-default="0">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="fan_spd_other" class="col-xs-12 col-sm-9 col-form-label">velocidad del ventilador para otras capas [0-255]</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="fan_spd_other" min="0" max="255" value="255"  data-default="255">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="feed_e" class="col-xs-12 col-sm-9 col-form-label">Avance máximo para la extrusora (mm/s)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="feed_e" value="25" data-default="25">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="feed_print" class="col-xs-12 col-sm-9 col-form-label">Velocidad de impresión (mm/min)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="feed_print" value="3000" data-default="3000">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="feed_print_first" class="col-xs-12 col-sm-9 col-form-label">Velocidad de impresión de la primera capa (mm/min)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="feed_print_first" value="1200" data-default="1200">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="feed_print_outer" class="col-xs-12 col-sm-9 col-form-label">Velocidad de impresión pared exterior (mm/min)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="feed_print_outer" value="3000" data-default="3000">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="feed_travel" class="col-xs-12 col-sm-9 col-form-label">Velocidad de desplazamiento (mm/min) = 15cm*10*60 min</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="feed_travel" value="9000" data-default="9000">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="feed_x" class="col-xs-12 col-sm-9 col-form-label">Velocidad de X (mm/s)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="feed_x" value="500" data-default="500">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="feed_y" class="col-xs-12 col-sm-9 col-form-label">Velocidad de Y (mm/s)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="feed_y" value="500" data-default="500">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="feed_z" class="col-xs-12 col-sm-9 col-form-label">Velocidad de Z (mm/s)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="feed_z" value="5" data-default="5">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="feed_z_m" class="col-xs-12 col-sm-9 col-form-label">Velocidad de Z (mm/m)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="feed_z_m" value="300" data-default="300">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="feed_z_ret" class="col-xs-12 col-sm-9 col-form-label">Velocidad de Z en retracción (mm/m)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="feed_z_ret" value="300" data-default="300">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="filament_diam" class="col-xs-12 col-sm-9 col-form-label">Diámetro del filamento (mm)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="filament_diam" step="0.01" value="1.75" data-default="1.75">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="gcode_intro_abl" class="col-xs-12 col-sm-9 col-form-label">gcode_intro_abl</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="text" class="form-control" id="gcode_intro_abl" value="" data-default="">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="gcode_intro_prime" class="col-xs-12 col-sm-9 col-form-label">gcode_intro_prime</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="text" class="form-control" id="gcode_intro_prime" value="\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X10.1 Y20 Z0.28 F5000.0 ; Move to start position\nG1 X10.1 Y200.0 Z0.28 F1500.0 E15 ; Draw the first line\nG1 X10.4 Y200.0 Z0.28 F5000.0 ; Move to side a little\nG1 X10.4 Y20 Z0.28 F1500.0 E30 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\n"
+                               data-default="\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\nG1 X10.1 Y20 Z0.28 F5000.0 ; Move to start position\nG1 X10.1 Y200.0 Z0.28 F1500.0 E15 ; Draw the first line\nG1 X10.4 Y200.0 Z0.28 F5000.0 ; Move to side a little\nG1 X10.4 Y20 Z0.28 F1500.0 E30 ; Draw the second line\nG92 E0 ; Reset Extruder\nG1 Z2.0 F3000 ; Move Z Axis up little to prevent scratching of Heat Bed\n">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="last_ret_d" class="col-xs-12 col-sm-9 col-form-label">last_ret_d</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="last_ret_d" value="0" data-default="0">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="layer_height" class="col-xs-12 col-sm-9 col-form-label">Altura de capa (mm)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="layer_height" step="0.01" value="0.12" data-default="0.12">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="line_width" class="col-xs-12 col-sm-9 col-form-label">Ancho de línea (mm)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="line_width" step="0.01" value="0.4" data-default="0.4">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="margin_x" class="col-xs-12 col-sm-9 col-form-label">Margen en X (mm)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="margin_x" value="20" data-default="20">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="margin_y" class="col-xs-12 col-sm-9 col-form-label">Margen en Y (mm)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="margin_y" value="50" data-default="50">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="max_tile_span" class="col-xs-12 col-sm-9 col-form-label"> Limíta la extensión de mosaico para pasos x/y para recuentos bajos de steps_x/steps_y (mm)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="max_tile_span" value="12" data-default="12">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="nozzle_diam" class="col-xs-12 col-sm-9 col-form-label">Tamaño de nozzle (mm)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="nozzle_diam" step="0.01" value="0.4" data-default="0.4">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="ret_d_start" class="col-xs-12 col-sm-9 col-form-label">ret_d_start (mm)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="ret_d_start" step="0.01" value="4.0" data-default="4.0">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="ret_d_step" class="col-xs-12 col-sm-9 col-form-label">ret_d_step (mm)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="ret_d_step" step="0.01" value="0.5" data-default="0.5">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="ret_spd_start" class="col-xs-12 col-sm-9 col-form-label">ret_spd_start (mm/s)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="ret_spd_start" value="20" data-default="20">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="ret_spd_step" class="col-xs-12 col-sm-9 col-form-label">ret_spd_step (mm/s)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="ret_spd_step" value="10" data-default="10">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="ret_temp_start" class="col-xs-12 col-sm-9 col-form-label">Temperatura de impresión (ºC)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="ret_temp_start" value="190" data-default="190">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="ret_temp_step" class="col-xs-12 col-sm-9 col-form-label">Cada incremento de Z, agregamos esto a la temperatura (ºC)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="ret_temp_step" value="-5" data-default="-5">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="ret_temp_step_h" class="col-xs-12 col-sm-9 col-form-label">No. de capas por cambio de temperatura: aproximadamente 5 mm aquí (5/layer_height)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="ret_temp_step_h" value="41" data-default="41">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="ret_z_hop" class="col-xs-12 col-sm-9 col-form-label">Combinar con la configuración de feed_z_ret (mm)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="ret_z_hop" step="0.01" value="0.12" data-default="0.12">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="square_size" class="col-xs-12 col-sm-9 col-form-label">Tamaño del lado del pilar cuadrado impreso (mm)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="square_size" value="3" data-default="3">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="steps_x" class="col-xs-12 col-sm-9 col-form-label">Pasos en X (ejemplo 10 pasos para distancia por defecto: 1.0 + 10*0.25 = 3.5)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="steps_x" value="7" data-default="7">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="steps_y" class="col-xs-12 col-sm-9 col-form-label">Pasos en Y</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="steps_y" value="5" data-default="5">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="steps_z" class="col-xs-12 col-sm-9 col-form-label">Pasos en Z</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="steps_z" value="1" data-default="1">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="temp_bed" class="col-xs-12 col-sm-9 col-form-label">Temperatura de la capa (ºC)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="temp_bed" value="50" data-default="50">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="temp_nozzle" class="col-xs-12 col-sm-9 col-form-label">Temperatura inicial del nozzle (ºC)</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="temp_nozzle" value="190" data-default="190">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="width_multiplier" class="col-xs-12 col-sm-9 col-form-label">Multiplicador</label>
+                    <div class="col-xs-12 col-sm-3">
+                        <input type="number" class="form-control" id="width_multiplier" step="0.01" value="1.0" data-default="1.0">
+                    </div>
+                </div>
+            </form>
+
+            <div class="form-group row">
+                <div class="col-6 text-center">
+                    <button type="button" class="btn btn-success" onclick="generate();">
+                        <i class="fas fa-file-export"></i>
+                        &nbsp;Generar JSON
+                    </button>
+                    <br>
+                    <small>Pasar los valores a JSON</small>
+                </div>
+                <div class="col-6 text-center">
+                    <button type="button" class="btn btn-success" onclick="fill();">
+                        <i class="fas fa-file-import"></i>
+                        &nbsp;Rellenar campos desde JSON
+                    </button>
+                    <br>
+                    <small>Pasar el JSON a valores</small>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="width_multiplier" class="col-12 col-form-label">JSON</label>
+                <div class="col-12">
+                    <textarea id="json" class="form-control" rows="10"></textarea>
+
+                    <button type="button" class="btn btn-success" onclick="download();">
+                        <i class="fas fa-download"></i>
+                        &nbsp;Descargar settings.json
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    function generate() {
+        const forms = document.querySelectorAll('form');
+        const form = forms[0];
+        let values = {};
+        [...form.elements].forEach((input) => {
+            val = input.value;
+            if (val === '') {
+                $('#' + input.id).val($('#' + input.id).data("default"));
+                val = $('#' + input.id).data("default");
+            }
+            values[input.id] = val;
+        });
+        $('#json').val(JSON.stringify(values));
+    }
+
+    function fill() {
+        const forms = document.querySelectorAll('form');
+        const form = forms[0];
+        [...form.elements].forEach((input) => {
+            switch (input.type) {
+                case 'text':
+                    $('#' + input.id).val('');
+                    break;
+                case 'number':
+                    $('#' + input.id).val(0);
+                    break;
+            }
+        });
+
+        const values = JSON.parse($('#json').val());
+        Object.entries(values).forEach(([key, value]) => {
+            $('#' + key).val(value);
+        });
+    }
+
+    function download() {
+        const element = document.createElement('a');
+        const text = $('#json').val();
+
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', 'settings.json');
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+    }
+</script>
+</html>
